@@ -1,0 +1,15 @@
+<h1>users#show</h2>
+
+
+<%= @user.name %>
+<%= @user.email %>
+<%= @user.password_digest %>
+<%= @user.icon %>
+<%= @user.sex %>
+<%= @user.age %>
+<%= @user.weight %>
+<%= @user.rate %>
+
+
+<%= link_to "プロフィール編集", edit_user_path, class: 'btn btn-outline-secondary btn-sm align-text-top' %>
+<%= link_to "退会する", @user, method: :delete, data: { confirm: "退会しますか?（プロフィール・投稿データはすべて削除されます。）" }, class:"signout-btn btn btn-danger" %>
