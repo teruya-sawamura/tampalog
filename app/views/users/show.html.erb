@@ -1,15 +1,38 @@
 <h1>users#show</h2>
 
+<ul>
+  <li><%= @user.name %></li>
+  <li><%= @user.email %></li>
+  <li><%= @user.password_digest %></li>
+  <li><%= @user.icon %></li>
+  <li><%= @user.sex %></li>
+  <li><%= @user.age %></li>
+  <li><%= @user.weight %></li>
+  <li><%= @user.rate %></li>
+</ul>
 
-<%= @user.name %>
-<%= @user.email %>
-<%= @user.password_digest %>
-<%= @user.icon %>
-<%= @user.sex %>
-<%= @user.age %>
-<%= @user.weight %>
-<%= @user.rate %>
+<div class="col-sm-11 mx-auto">
+    <%= form_with(model: @post, local: true) do |f| %>
+      <%= f.text_field :food, class:"col-7 no-gutters", :placeholder => "" %>
+      <%= f.text_field :protein, class:"col-2 no-gutters", :placeholder => "" %>
+      <%= f.hidden_field :date, :value => Date.current %>
+      <%= f.submit 'add', class:"col-2 no-gutters" %>
+    <% end %>
+</div>
+
+<div>
+  <% @posts.each do |post| %>
+    <ul>
+      <li><%= post.food %> : <%= post.protein %></li>
+    </ul>
+  <% end %>
+</div>
+
+
+
+
+
 
 
 <%= link_to "プロフィール編集", edit_user_path, class: 'btn btn-outline-secondary btn-sm align-text-top' %>
-<%= link_to "退会する", @user, method: :delete, data: { confirm: "退会しますか?（プロフィール・投稿データはすべて削除されます。）" }, class:"signout-btn btn btn-danger" %>
+<%= link_to "退会する", @user, method: :delete, data: { confirm: "退会しますか?（プロフィール・投稿データはすべて削除されます。）" }, class:"signout-btn btn-sm btn-danger" %>

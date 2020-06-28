@@ -4,6 +4,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    # ----投稿---------------
+    @post = current_user.posts.build
+    # -----------------------
+
+    # ----投稿一覧------------
+    @posts = current_user.posts.all
+    # -----------------------
   end
 
   def new

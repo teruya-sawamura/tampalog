@@ -1,5 +1,17 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome to the Tampalog!</h1>
+<% if logged_in? %>
+
+  <% @posts.each do |post| %>
+    <p><% post %></p>
+  <% end %>
+
+<% else %>
+
+  <div class="center jumbotron">
+      <div class="text-center">
+        <h1>Welcome to the Tampalog!</h1>
+      </div>
   </div>
-</div>
+
+<% end %>
+
+    
