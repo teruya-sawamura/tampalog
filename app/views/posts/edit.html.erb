@@ -1,2 +1,16 @@
 <h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="mx-auto col-12">
+    <%= form_with(model: @post, local: true) do |f| %>
+        <%= f.label :food, class:"col-sm-4 col-4 no-gutters" "Food" %>
+        <%= f.text_field :food, class:"col-sm-7 col-7 no-gutters", :placeholder => "Food" %>
+        <%= f.label :protein, class:"col-sm-4 col-4 no-gutters" "Protein" %>
+        <%= f.text_field :protein, class:"col-sm-7 col-7 no-gutters", :placeholder => "Protein" %>
+        <%= f.label :date, class:"col-sm-4 col-4 no-gutters" "Date" %>
+        <%= f.date_field :date, class:"col-sm-7 col-7 no-gutters", :placeholder => "20XX-XX-XX" %>
+        <div class="pr-sm-4"><%= f.submit 'edit', class:"col-sm-5 col-11 no-gutters" %></div>
+    <% end %>
+
+    <%# <% if current_user == @post.user %> %>
+      <%= link_to "Delete", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+    <%# <% end %> %>
+</div>

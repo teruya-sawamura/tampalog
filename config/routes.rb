@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/show'
-  get 'posts/create'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
   root to: 'toppages#index'
 
   get 'signup', to: 'users#new'

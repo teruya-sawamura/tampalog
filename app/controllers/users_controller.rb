@@ -5,13 +5,34 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    # ----投稿---------------
+    # -----投稿------------------------------------
     @post = current_user.posts.build
-    # -----------------------
+    # ---------------------------------------------
 
-    # ----投稿一覧------------
-    @posts = current_user.posts.all
-    # -----------------------
+    # -----投稿一覧--------------------------------
+    @posts = current_user.posts.where(date: Date.today)
+    # --------------------------------------------
+
+    # -----本日の合計protein-----------------------
+    s = 0
+    @posts.each do |post| 
+      s += post.protein
+    end
+    @today_total_protein = s
+    # --------------------------------------------
+
+    # -----月間AVG.--------------------------------
+    month_posts = current_user.posts.where(date: Time.current.all_month)
+    t = 0
+    month_posts.each do |month_post|
+      t += month_post.protein
+    end
+    month_total_protein = t
+    r = Time.new
+    day = r.strftime("%d")
+    @month = r.strftime("%m")
+    @month_avg_protein = t / day.to_i
+    # --------------------------------------------
   end
 
   def new

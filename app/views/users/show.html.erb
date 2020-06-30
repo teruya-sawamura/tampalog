@@ -21,9 +21,11 @@
 </div>
 
 <div>
+  <p>本日合計 : <%= @today_total_protein %>g</p>
+  <p><%= @month %>月の1日平均 : <%= @month_avg_protein %>g</p>
   <% @posts.each do |post| %>
     <ul>
-      <li><%= post.food %> : <%= post.protein %></li>
+      <li><%= link_to edit_post_path(post) do %><%= post.food %> : <%= post.protein %>g<% end %></li>
     </ul>
   <% end %>
 </div>
