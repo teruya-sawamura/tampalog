@@ -1,0 +1,16 @@
+<h1>posts#search</h1>
+
+
+<div class="mx-auto col-12 pt-4">
+    <% @search_posts.each do |search_post| %>
+    <div class="py-2 col-sm-10 mx-auto row">
+        <i>
+          <%= link_to edit_post_path(search_post.id) do %>
+            <%= search_post.food %>
+            <%= search_post.protein %>g
+            <%= search_post.date %>
+          <% end %>
+        </i>
+    </div>
+    <% end %>
+</div>

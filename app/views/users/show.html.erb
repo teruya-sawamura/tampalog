@@ -30,6 +30,13 @@
   <% end %>
 </div>
 
+<div class="pt-2 pb-3 pl-4 pt-sm-3 pb-sm-4 mb-2">
+    <p>Search previous</p>
+    <%= search_form_for @search, url: search_path(@user.id) do |f| %>
+        <%= f.date_field :date_eq, :placeholder => "20XX-XX-XX", class:"col-9 no-gutters" %>
+        <%= f.submit "find", class:"col-2 no-gutters" %>
+    <% end %>
+</div>
 
 
 

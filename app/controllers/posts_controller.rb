@@ -45,6 +45,18 @@ class PostsController < ApplicationController
     redirect_to @user
   end
 
+  def search
+    @user = current_user
+    @search = current_user.posts.ransack(params[:q])
+
+    @search_posts = 
+      if params[:q].blank?
+        Post.none.search
+      else  
+        @search.result(distinct: true)
+      end
+  end
+
 
   private
 

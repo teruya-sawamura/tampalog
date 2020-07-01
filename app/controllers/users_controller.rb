@@ -33,8 +33,14 @@ class UsersController < ApplicationController
     @month = r.strftime("%m")
     @month_avg_protein = t / day.to_i
     # --------------------------------------------
-  end
 
+    # -----Ransack用アクション---------------------
+    @search = current_user.posts.ransack(params[:q])
+    @search_posts = @search.result(distinct: true)
+    # --------------------------------------------
+
+  end
+    
   def new
     @user = User.new
   end

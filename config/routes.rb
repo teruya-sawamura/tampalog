@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy]
+  get 'search', to: 'posts#search'
 
 end
